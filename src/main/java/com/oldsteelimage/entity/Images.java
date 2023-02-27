@@ -1,18 +1,27 @@
 package com.oldsteelimage.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
+import org.hibernate.annotations.Type;
 
-@Entity
+import javax.persistence.*;
+
+@Entity @Table(name = "images")
+@AllArgsConstructor @NoArgsConstructor
+@Getter @Setter
+@ToString
 public class Images {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String imageData;
+    @Lob
+    private byte[] imageData;
     private String imageName;
+    private String contentType;
 
-
+    public Images(byte[] imageData, String imageName, String contentType) {
+        this.imageData = imageData;
+        this.imageName = imageName;
+        this.contentType = contentType;
+    }
 }
