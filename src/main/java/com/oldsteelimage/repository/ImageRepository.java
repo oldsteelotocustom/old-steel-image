@@ -14,7 +14,7 @@ public interface ImageRepository extends JpaRepository<Images, Long> {
     @Query("select i from Images i where i.imageName = 1")
     Optional<Images> findImageByName(String name);
 
-    List<Images> findImageByImageName(String imageName);
+    List<Images> findImagesByImageName(String imageName);
 
 
 }
