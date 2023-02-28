@@ -40,4 +40,9 @@ public class ImageService {
         return imageRepository.findAll();
     }
 
+    public Images getImageById(Long id){
+        var image = imageRepository.findById(id);
+        return image.get();
+    }
+
 }
