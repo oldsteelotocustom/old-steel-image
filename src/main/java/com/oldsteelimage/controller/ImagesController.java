@@ -5,6 +5,7 @@ import com.oldsteelimage.entity.Images;
 import com.oldsteelimage.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,15 @@ import java.util.List;
 @Slf4j
 public class ImagesController {
 
+
     private final ImageService imageService;
 
     public String testHai(){
         return "This is API TESTING";
     }
 
-    @PostMapping("/upload")
-            //, headers = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/upload")
+    @ResponseBody
     public ResponseEntity<?> uploadImage(@RequestParam ("file") MultipartFile file){
         var upload = imageService.storeImage(file);
         log.info("This end point just got hit");
