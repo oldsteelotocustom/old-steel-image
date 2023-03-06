@@ -21,7 +21,7 @@ public class ImageService {
     private final ImageRepository imageRepository;
 
     public Images storeImage(MultipartFile file){
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         var images = new Images();
         try {
             if(fileName.contains("...")){
